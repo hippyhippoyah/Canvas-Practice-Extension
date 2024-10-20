@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "Canvas Practice Test",
+    "version": "1.1",
+    "description": "This extension will allow you to practice taking a quiz on Canvas.",
+    "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": [
+        "https://canvas.wisc.edu/courses/*/assignments/*/submissions/*",
+        "https://canvas.wisc.edu/courses/*/quizzes/*"
+      ]
+    }
+  ]
+}
