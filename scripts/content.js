@@ -32,10 +32,11 @@ function hideAnswers(){
     const correctTags = document.getElementsByClassName("answer_arrow");
     const inputs = document.getElementsByTagName("input");
     const answers = document.getElementsByClassName("answer");
-    const questionBoxes = document.getElementsByClassName("display_question");
+    // const questionBoxes = document.getElementsByClassName("display_question");
     const inputBoxes = document.getElementsByClassName("answer_group");
+    const correctAnswers = document.getElementsByClassName("correct_answer");
 
-    //Testing
+    //Global Reveal (each question reveal is blocked)
     const fixedButton = document.createElement("button");
     fixedButton.innerText = "Reveal Answer";
     fixedButton.style.position = "fixed"; 
@@ -54,6 +55,15 @@ function hideAnswers(){
             for (var i = 0; i < inputBoxes.length; i++) {
                 inputBoxes[i].style.display = "block";
             }
+            for (var i = 0; i < correctAnswers.length; i++) {
+                correctAnswers[i].getElementsByTagName("input")[0].checked = true;
+            }
+            for(let i = 0; i < inputs.length; i++) {
+                //If selected, please fix and add button
+                if(!inputs[i].parentElement.parentElement.classList.contains('correct_answer')) {
+                    inputs[i].style.color = 'red';
+                }
+            }
             fixedButton.innerText = "Hide Answer";
             revealed = true;
         } else {
@@ -63,39 +73,39 @@ function hideAnswers(){
             for (var i = 0; i < inputBoxes.length; i++) {
                 inputBoxes[i].style.display = "none";
             }
+            for (var i = 0; i < correctAnswers.length; i++) {
+                correctAnswers[i].getElementsByTagName("input")[0].checked = false;
+            }
+            for(let i = 0; i < inputs.length; i++) {
+                inputs[i].style.color = 'black';
+            }
             fixedButton.innerText = "Reveal Answer";
             revealed = false;
         }
     });
 
-   
-
 
     for (let i = 0; i < inputs.length; i++) {
         if (inputs[i].type === 'checkbox' || inputs[i].type === 'radio') {
             inputs[i].checked = false;
+            inputs[i].removeAttribute("disabled"); 
         }
     }
-
-
-    if (correctTags) {
-        for (var i = 0; i < correctTags.length; i++) {
-            correctTags[i].style.opacity = '0';
-        }
+    for (var i = 0; i < correctTags.length; i++) {
+        correctTags[i].style.opacity = '0';
     }
 
-    if (answers) {
-        for (var i = 0; i < answers.length; i++) {
-            answers[i].style.opacity = "1";
-            answers[i].style.border = 'none';
-        }
+    for (var i = 0; i < answers.length; i++) {
+        answers[i].style.opacity = "1";
+        answers[i].style.border = 'none';
     }
 
-    if (inputBoxes) {
-        for (var i = 0; i < inputBoxes.length; i++) {
-            inputBoxes[i].style.display = "none";
-        }
+    for (var i = 0; i < inputBoxes.length; i++) {
+        inputBoxes[i].style.display = "none";
     }
+
+    
+    
 
 
 }
