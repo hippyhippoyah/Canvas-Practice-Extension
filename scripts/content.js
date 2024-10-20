@@ -33,29 +33,42 @@ function hideAnswers(){
     const inputs = document.getElementsByTagName("input");
     const answers = document.getElementsByClassName("answer");
     const questionBoxes = document.getElementsByClassName("display_question");
+    const inputBoxes = document.getElementsByClassName("answer_group");
 
-    for (let i = 0; i < questionBoxes.length; i++) {
-        const questionBox = questionBoxes[i];
+    //Testing
+    const fixedButton = document.createElement("button");
+    fixedButton.innerText = "Reveal Answer";
+    fixedButton.style.position = "fixed"; 
+    fixedButton.style.top = "50%"; 
+    fixedButton.style.left = "80%";
+    fixedButton.style.zIndex = "1000"; 
+    document.body.appendChild(fixedButton);
 
-        const revealButton = document.createElement("button");
-        revealButton.innerText = "Reveal Answer";
+    var revealed = false;
 
-        // Clicking this button is blocked by canvas
-        revealButton.addEventListener("click", function() {
-            // Blocked by canvas
-            // const answerArrows = questionBox.getElementsByClassName("answer_arrow");
-
-            // for (let j = 0; j < answerArrows.length; j++) {
-            //     answerArrows[j].style.opacity = "1";
-            // }
-
-        });
-
-        const header = questionBox.querySelector('.header');
-        if (header) {
-            header.appendChild(revealButton);
+    fixedButton.addEventListener("click", function() {
+        if (!revealed) {
+            for (var i = 0; i < correctTags.length; i++) {
+                correctTags[i].style.opacity = '1';
+            }
+            for (var i = 0; i < inputBoxes.length; i++) {
+                inputBoxes[i].style.display = "block";
+            }
+            fixedButton.innerText = "Hide Answer";
+            revealed = true;
+        } else {
+            for (var i = 0; i < correctTags.length; i++) {
+                correctTags[i].style.opacity = '0';
+            }
+            for (var i = 0; i < inputBoxes.length; i++) {
+                inputBoxes[i].style.display = "none";
+            }
+            fixedButton.innerText = "Reveal Answer";
+            revealed = false;
         }
-    }
+    });
+
+   
 
 
     for (let i = 0; i < inputs.length; i++) {
@@ -78,5 +91,11 @@ function hideAnswers(){
         }
     }
 
-    //Todo: Add reveal option for each question, add scoring, hide score, 
+    if (inputBoxes) {
+        for (var i = 0; i < inputBoxes.length; i++) {
+            inputBoxes[i].style.display = "none";
+        }
+    }
+
+
 }
