@@ -35,6 +35,7 @@ function hideAnswers(){
     // const questionBoxes = document.getElementsByClassName("display_question");
     const inputBoxes = document.getElementsByClassName("answer_group");
     const correctAnswers = document.getElementsByClassName("correct_answer");
+    const comments = document.getElementsByClassName("quiz_comment");
 
     //Global Reveal (each question reveal is blocked)
     const fixedButton = document.createElement("button");
@@ -64,6 +65,10 @@ function hideAnswers(){
                     inputs[i].style.color = 'red';
                 }
             }
+            for (var i=0; i < comments.length; i++) {
+                if(!comments[i].classList.contains('empty')) 
+                    comments[i].style.display = "block";
+            }
             fixedButton.innerText = "Hide Answer";
             revealed = true;
         } else {
@@ -78,6 +83,9 @@ function hideAnswers(){
             }
             for(let i = 0; i < inputs.length; i++) {
                 inputs[i].style.color = 'black';
+            }
+            for (var i=0; i < comments.length; i++) {
+                comments[i].style.display = "none";
             }
             fixedButton.innerText = "Reveal Answer";
             revealed = false;
@@ -102,6 +110,10 @@ function hideAnswers(){
 
     for (var i = 0; i < inputBoxes.length; i++) {
         inputBoxes[i].style.display = "none";
+    }
+
+    for (var i=0; i < comments.length; i++) {
+        comments[i].style.display = "none";
     }
 
     
