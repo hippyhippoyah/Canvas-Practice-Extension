@@ -32,6 +32,7 @@ function hideAnswers(){
     const correctTags = document.getElementsByClassName("answer_arrow");
     const inputs = document.getElementsByTagName("input");
     const answers = document.getElementsByClassName("answer");
+    const answer_textual = document.getElementsByClassName("answer_for_");
     // const questionBoxes = document.getElementsByClassName("display_question");
     const inputBoxes = document.getElementsByClassName("answer_group");
     const correctAnswers = document.getElementsByClassName("correct_answer");
@@ -69,6 +70,9 @@ function hideAnswers(){
                 if(!comments[i].classList.contains('empty')) 
                     comments[i].style.display = "block";
             }
+            for (var i=0; i < answer_textual.length; i++){
+                answer_textual[i].style.opacity = '1';
+            }
             fixedButton.innerText = "Hide Answer";
             revealed = true;
         } else {
@@ -86,6 +90,9 @@ function hideAnswers(){
             }
             for (var i=0; i < comments.length; i++) {
                 comments[i].style.display = "none";
+            }
+            for (var i=0; i < answer_textual.length; i++){
+                answer_textual[i].style.opacity = '0';
             }
             fixedButton.innerText = "Reveal Answer";
             revealed = false;
