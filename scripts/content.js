@@ -41,8 +41,9 @@ function hideAnswers(){
     const fixedButton = document.createElement("button");
     fixedButton.innerText = "Reveal Answer";
     fixedButton.style.position = "fixed"; 
-    fixedButton.style.top = "50%"; 
-    fixedButton.style.left = "80%";
+    fixedButton.style.top = "5%"; 
+    fixedButton.style.left = "88%";
+    fixedButton.style.padding = "10px";  
     fixedButton.style.zIndex = "1000"; 
     document.body.appendChild(fixedButton);
 
