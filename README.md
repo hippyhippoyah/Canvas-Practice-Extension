@@ -1,5 +1,9 @@
 # Canvas Assessment Practice Tool
 
+V 1.2
+
+Download Here: https://chromewebstore.google.com/detail/canvas-practice-test/lbiojlokpmbniiieibfmjfgebgflepli 
+
 This tool allows students to practice Canvas assessments and quizzes they have already completed. By re-taking these assessments, students can reinforce their knowledge and prepare for future evaluations.
 
 ## Features
